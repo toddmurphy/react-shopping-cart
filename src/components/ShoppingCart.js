@@ -4,8 +4,8 @@ import {CartContext} from '../contexts/CartContext';
 // Components
 import Item from './ShoppingCartItem';
 
-const ShoppingCart = (props) => {
-	const cart = useContext(CartContext);
+const ShoppingCart = () => {
+	const {cart} = useContext(CartContext);
 
 
 	const getCartTotal = () => {

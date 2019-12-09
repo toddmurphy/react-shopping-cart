@@ -21,23 +21,22 @@ function App() {
 
 	//Remove item from ShoppingCartItem
 	const removeItem = (id) => {
-		const deltedItem = cart.filter(cart => cart.id !== id)
-		setCart(deltedItem)
+		setCart(cart.filter(cart => cart.id !== id))
+
 	};
 
 
 	return (
-		<div className="App">
-
-			<CartContext.Provider value={cart}>
-				<Navigation />
-				{/* Routes */}
-				<ProductContext.Provider value={{ products, addItem, removeItem }}>
+		<CartContext.Provider value={{ cart, removeItem }}>
+			<ProductContext.Provider value={{ products, addItem }}>
+				<div className="App">
+					<Navigation />
+					{/* Routes */}
 					<Route exact path="/" component={Products} />
 					<Route path="/cart" component={ShoppingCart} />
-				</ProductContext.Provider>
-			</CartContext.Provider>
-		</div>
+				</div>
+			</ProductContext.Provider>
+		</CartContext.Provider>
 	);
 }
 
